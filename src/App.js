@@ -27,11 +27,32 @@ function App() {
     );
 }
 class Field extends React.Component {
+    constructor(props) {
+        super(props);
+        //Initial state
+        this.state = {
+            clicked: null,
+            cells: Array.from(Array(72).keys())
+        };
+
+        this.cell = this.cell.bind(this);
+    }
+
+    cell(cell) {
+        this.setState({
+            clicked: cell
+        });
+        console.log(cell);
+    }
+
     render() {
-        let cells = Array.from(Array(72).keys());
-        let cellDiv = cells.map(cell => <button className="cell" key={cell}> </button>);
+        //let cells = Array.from(Array(72).keys());
+        //let cellDiv = this.state.cells.map(cell => <button className="cell" key={cell}> </button>);
         return <div className="Field">
-            {cellDiv}
+            {this.state.cells.map(cell =>
+                <button className="cell" key={cell}
+                        onClick={() => this.cell(cell)}>
+                </button>)}
         </div>
     }
 }
