@@ -13,7 +13,7 @@ function App() {
                     </div>
                     <div className="controlPanel">
                         <p className="flag-counter">10</p>
-                        <img className="flag" src="https://images.emojiterra.com/mozilla/512px/1f4a3.png" alt="flag counter"/>
+                        <p className="flag">&#x1F4A3;</p>
                         <a href="#">
                             <img className="reset"
                                  src="https://cdn2.iconfinder.com/data/icons/basic-ui-elements-round/700/012_restart-2-512.png"
@@ -26,12 +26,13 @@ function App() {
         </div>
     );
 }
+
 class Field extends React.Component {
     constructor(props) {
         super(props);
         //Initial state
         this.state = {
-            clicked: null,
+            clicked: [],
             cells: Array.from(Array(72).keys())
         };
 
@@ -40,19 +41,23 @@ class Field extends React.Component {
 
     cell(cell) {
         this.setState({
-            clicked: cell
+            clicked: [ ...this.state.clicked, cell]
         });
-        console.log(cell);
+        console.log(this.state.clicked);
     }
 
     render() {
-        //let cells = Array.from(Array(72).keys());
-        //let cellDiv = this.state.cells.map(cell => <button className="cell" key={cell}> </button>);
+
         return <div className="Field">
-            {this.state.cells.map(cell =>
-                <button className="cell" key={cell}
+            {this.state.cells.map(cell => this.state.clicked.includes(cell) ?
+                <button className="cellClicked" key={cell}
                         onClick={() => this.cell(cell)}>
-                </button>)}
+                </button> :
+                <button className="cellNotClicked" key={cell}
+                onClick={() => this.cell(cell)}>
+                </button>)
+            }
+
         </div>
     }
 }
