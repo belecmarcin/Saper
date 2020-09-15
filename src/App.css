@@ -97,6 +97,32 @@
   margin: 3px;
 }
 
+.Mine-pic {
+  background-image: url("fired.svg");
+  background-size: 100%;
+  background-color: red;
+  width: 24px;
+  height: 24px;
+  margin: 3px;
+  box-shadow: 0 0 7px red;
+  border-radius: 3px;
+  /* Eliminate border Uncomment*/
+  border: none
+}
+
+.Target-pic {
+  background-image: url("target.svg");
+  background-size: 100%;
+  background-color: blue;
+  width: 24px;
+  height: 24px;
+  margin: 3px;
+  box-shadow: 0 0 7px red;
+  border-radius: 3px;
+  /* Eliminate border Uncomment*/
+  border: none
+}
+
 .App-logo {
   height: 25px;
   pointer-events: none;

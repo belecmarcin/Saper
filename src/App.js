@@ -1,5 +1,7 @@
 import React from 'react';
 import logo from './bomb.svg';
+import mine from './fired.svg';
+import target from './target.svg'
 import './App.css';
 
 function App() {
@@ -33,31 +35,57 @@ class Field extends React.Component {
         //Initial state
         this.state = {
             clicked: [],
-            cells: Array.from(Array(72).keys())
+            cells: Array.from(Array(72).keys()),
+            bombs: Array.from({length: 10}, (_, i) => Math.floor(Math.random() * 72)),
+            rightClick: [],
+            increment: 0,
         };
-
-        this.cell = this.cell.bind(this);
     }
 
-    cell(cell) {
+    cell(cell, right) {
         this.setState({
-            clicked: [ ...this.state.clicked, cell]
-        });
-        console.log(this.state.clicked);
+            clicked: cell === -1 ? this.state.clicked : [ ...this.state.clicked, cell],
+            increment: this.state.increment + right,
+            rightClick: right === 0 ? this.state.rightClick : [ ...this.state.rightClick, this.state.increment],
+        })
+        console.log("clicked:", this.state.clicked);
+        console.log("right", this.state.rightClick, this.state.increment);
     }
 
     render() {
-
-        return <div className="Field">
-            {this.state.cells.map(cell => this.state.clicked.includes(cell) ?
-                <button className="cellClicked" key={cell}
-                        onClick={() => this.cell(cell)}>
-                </button> :
-                <button className="cellNotClicked" key={cell}
-                onClick={() => this.cell(cell)}>
-                </button>)
+        //let rightClick = false;
+        return <div className="Field" onContextMenu={(e) => {
+            e.preventDefault(); this.cell(-1, 1)}
+        }
+            onClick={(e) => { console.log("text")}}>
+            {
+                this.state.cells.map(cell => {
+                    console.log("increment", this.state.increment, this.state.rightClick);
+                    if (this.state.rightClick.includes(this.state.increment)) {
+                        return (<button className="Target-pic" key={cell}
+                                        onClick={() => this.cell(cell, 0)
+                                        }>
+                        </button>)
+                    }
+                    else if (this.state.bombs.includes(cell) && this.state.clicked.includes(cell)) {
+                        return (<button className="Mine-pic" key={cell}
+                                        onClick={() => this.cell(cell, 0)}>
+                            </button>)
+                    }
+                    else {
+                        if (this.state.clicked.includes(cell)) {
+                            console.log("jestem");
+                            return (<button className="cellClicked" key={cell}
+                                            onClick={() => this.cell(cell, 0)}>
+                            </button>)
+                        } else {
+                            return (<button className="cellNotClicked" key={cell}
+                                            onClick={() => this.cell(cell, 0)}>
+                            </button>)
+                        }
+                    }
+                })
             }
-
         </div>
     }
 }
