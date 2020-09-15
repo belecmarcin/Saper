@@ -79,7 +79,7 @@
   border: none;
 }
 
-.cellClicked {
+.leftClick {
   background-color: #2d2e2b;
   width: 24px;
   height: 24px;
@@ -87,17 +87,18 @@
   box-shadow: 0 0 7px red;
   border-radius: 3px;
   /* Eliminate border Uncomment*/
-  border: none
+  border: none;
 }
 
-.cell div {
+.cell {
   width: 24px;
   height: 24px;
   background: black;
   margin: 3px;
+  border: none;
 }
 
-.Mine-pic {
+.bomb {
   background-image: url("fired.svg");
   background-size: 100%;
   background-color: red;
@@ -110,10 +111,10 @@
   border: none
 }
 
-.Target-pic {
+.rightClick {
   background-image: url("target.svg");
   background-size: 100%;
-  background-color: blue;
+  background-color: #000;
   width: 24px;
   height: 24px;
   margin: 3px;

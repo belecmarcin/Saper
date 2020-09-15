@@ -19,9 +19,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\Users\Marcin\WebstormProjects\saper\saper\src" />
+    </key>
   </component>
   <component name="RunManager" selected="JavaScript Debug.Debug Application">
     <configuration name="Debug Application" type="JavascriptDebugType" uri="http://localhost:3000">
@@ -69,6 +74,7 @@
       <workItem from="1598581982085" duration="5720000" />
       <workItem from="1599501254288" duration="22193000" />
       <workItem from="1599592181183" duration="16427000" />
+      <workItem from="1600190118208" duration="9884000" />
     </task>
     <servers />
   </component>
